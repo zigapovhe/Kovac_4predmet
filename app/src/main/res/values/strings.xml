@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">4Predmet_MatijaKovac</string>
+    <string name="access_token">pk.eyJ1IjoiemlnYXBvdmhlIiwiYSI6ImNqczNsYzVicjB4Y3EzeWt2cXFvcmRyNm4ifQ.G_24l6AiopycpAXQwvMQ1A</string>
+    <string name="marker1">Ambruški vaški center</string>
+    <string name="marker2">Cerkev Marije Brezmadežne</string>
+    <string name="marker3">Izvir reke Krke</string>
+    <string name="marker4">Kraška jama</string>
+    <string name="marker5">Ciganov Vrh, ruševine</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
