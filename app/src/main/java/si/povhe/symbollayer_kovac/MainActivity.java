@@ -55,15 +55,40 @@ public class MainActivity extends AppCompatActivity implements MarkerInfo.OnFrag
                         Fragment fragment = manager.findFragmentById(R.id.fragment_container);
 
                         Bundle packet = new Bundle();
-                        packet.putString("marker_name", marker.getTitle());
+                        String markerName = marker.getTitle();
+                        int markerImage=R.drawable.cerkev;
+                        if (markerName.equals("Ambruški vaški center")){
+                            markerImage = R.drawable.ambrus;
+                        } else if (markerName.equals("Kraška jama")){
+                            markerImage = R.drawable.jama;
+                        } else if (markerName.equals("Ciganov Vrh, ruševine")){
+                            markerImage = R.drawable.ciganov;
+                        } else if (markerName.equals("Izvir reke Krke")){
+                            markerImage  =R.drawable.krka;
+                        } else if (markerName.equals("Cerkev Marije Brezmadežne")){
+                            markerImage = R.drawable.cerkev3;
+                        }
+                        packet.putString("marker_name", markerName);
+                        packet.putInt("marker_image", markerImage);
+                        System.out.println("Packet:"+markerName);
                         MarkerInfo sendData = new MarkerInfo();
                         sendData.setArguments(packet);
 
                         if (fragment == null){
                             fragment = new MarkerInfo();
+                            fragment.setArguments(packet);
                             FragmentTransaction transaction = manager.beginTransaction();
+                            transaction.addToBackStack(null);
+
                             transaction.add(R.id.fragment_container, fragment).commit();
+
                         }
+
+                        if(fragment != null){
+                            fragment = new MarkerInfo();
+                            fragment.setArguments(packet);
+                        }
+
                         //System.out.println(marker.getTitle());
                         return true;
                     }
