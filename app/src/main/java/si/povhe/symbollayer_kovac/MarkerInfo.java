@@ -23,7 +23,7 @@ import com.mapbox.mapboxsdk.annotations.Marker;
  * Use the {@link MarkerInfo#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MarkerInfo extends Fragment {
+public class MarkerInfo extends Fragment implements View.OnClickListener{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "marker_name";
@@ -34,7 +34,7 @@ public class MarkerInfo extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private int mParam2;
-
+    private Button backBtn;
 
 
     private OnFragmentInteractionListener mListener;
@@ -82,9 +82,11 @@ public class MarkerInfo extends Fragment {
         View view = inflater.inflate(R.layout.fragment_marker_info, container, false);
 
         TextView markerText = view.findViewById(R.id.markerTxt);
+        backBtn = (Button)view.findViewById(R.id.backBtn);
         ImageView markerImage = view.findViewById(R.id.markerIMG);
        markerImage.setImageResource(mParam2);
 
+       backBtn.setOnClickListener(this);
         System.out.println("plsWork:"+mParam1);
         markerText.setText(mParam1);
 
@@ -92,6 +94,11 @@ public class MarkerInfo extends Fragment {
 
 
         return view;
+    }
+
+    @Override
+    public void onClick(View v) {
+        getFragmentManager().popBackStackImmediate();
     }
 
     // TODO: Rename method, update argument and hook method into UI event
