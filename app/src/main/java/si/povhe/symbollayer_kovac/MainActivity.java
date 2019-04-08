@@ -54,12 +54,17 @@ public class MainActivity extends AppCompatActivity implements MarkerInfo.OnFrag
                         FragmentManager manager = getSupportFragmentManager();
                         Fragment fragment = manager.findFragmentById(R.id.fragment_container);
 
+                        Bundle packet = new Bundle();
+                        packet.putString("marker_name", marker.getTitle());
+                        MarkerInfo sendData = new MarkerInfo();
+                        sendData.setArguments(packet);
+
                         if (fragment == null){
                             fragment = new MarkerInfo();
                             FragmentTransaction transaction = manager.beginTransaction();
                             transaction.add(R.id.fragment_container, fragment).commit();
                         }
-                        System.out.println(marker.getTitle());
+                        //System.out.println(marker.getTitle());
                         return true;
                     }
                 });
