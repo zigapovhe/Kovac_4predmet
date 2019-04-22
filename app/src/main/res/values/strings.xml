@@ -6,7 +6,11 @@
     <string name="marker3">Izvir reke Krke</string>
     <string name="marker4">Kraška jama</string>
     <string name="marker5">Ciganov Vrh, ruševine</string>
-
+    <string name="ambrus_opis">Ta prelepi vaški center oz. Ambruški park kulture je bil nedolgo nazaj polepšan in je sedaj eden izmen najlepših vaških centrov v Sloveniji. Park so oblikovali sami prebivalci Ambrusa in iz okoliških vasi.</string>
+    <string name="cerkev_opis">Cerkev je Rimskokatoliška, posvečena Marijinem brezmadežnem spočetju. Del nje je bil zazidan leta 1798, današnjo obliko je pa dosegla leta 1945, ko so dodali spominske plošče padlih vaščanov.</string>
+    <string name="krka_opis">Voda teče na površino po umetnem vzhodu do Krške jame, v visokih vodah pa je poplavljena, nato pa je Krška jama nedostopna. Krka je oddaljena 94 km in se izliva v reko Savo pri Brežicah.</string>
+    <string name="jama_opis">Ta del pokrajine je zelo znan po kraških jamah, zaradi tako imenovanega apnenca.</string>
+    <string name="vrh_opis">Za pohodnike je ta zelo primerna saj imajo vaščani is kraja Krke vsako leto pohod do tega vrha, pot je dolga okoli 11 km.</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

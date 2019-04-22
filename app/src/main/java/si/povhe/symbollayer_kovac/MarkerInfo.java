@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import com.mapbox.mapboxsdk.annotations.Marker;
 
+import org.w3c.dom.Text;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,12 +30,14 @@ public class MarkerInfo extends Fragment implements View.OnClickListener{
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "marker_name";
     private static final String ARG_PARAM2 = "marker_image";
+    private static final String ARG_PARAM3 = "marker_opis";
     private Marker marker;
 
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private int mParam2;
+    private String mParam3;
     private Button backBtn;
 
 
@@ -52,11 +56,12 @@ public class MarkerInfo extends Fragment implements View.OnClickListener{
      * @return A new instance of fragment MarkerInfo.
      */
     // TODO: Rename and change types and number of parameters
-    public static MarkerInfo newInstance(String param1, String param2) {
+    public static MarkerInfo newInstance(String param1, String param2, String param3) {
         MarkerInfo fragment = new MarkerInfo();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
+        args.putString(ARG_PARAM3, param3);
         fragment.setArguments(args);
         return fragment;
     }
@@ -68,7 +73,7 @@ public class MarkerInfo extends Fragment implements View.OnClickListener{
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getInt(ARG_PARAM2);
-
+            mParam3 = getArguments().getString(ARG_PARAM3);
 
         }
 
@@ -82,14 +87,16 @@ public class MarkerInfo extends Fragment implements View.OnClickListener{
         View view = inflater.inflate(R.layout.fragment_marker_info, container, false);
 
         TextView markerText = view.findViewById(R.id.markerTxt);
-        backBtn = (Button)view.findViewById(R.id.backBtn);
+        TextView markerOpis = view.findViewById(R.id.opisTxt);
+
+        backBtn = view.findViewById(R.id.backBtn);
         ImageView markerImage = view.findViewById(R.id.markerIMG);
        markerImage.setImageResource(mParam2);
 
        backBtn.setOnClickListener(this);
         System.out.println("plsWork:"+mParam1);
         markerText.setText(mParam1);
-
+        markerOpis.setText(mParam3);
 
 
 

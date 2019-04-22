@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements MarkerInfo.OnFrag
 
                         Bundle packet = new Bundle();
                         String markerName = marker.getTitle();
+                        String markerOpis = marker.getSnippet();
                         int markerImage=R.drawable.cerkev;
                         if (markerName.equals("Ambruški vaški center")){
                             markerImage = R.drawable.ambrus;
@@ -66,10 +67,11 @@ public class MainActivity extends AppCompatActivity implements MarkerInfo.OnFrag
                         } else if (markerName.equals("Izvir reke Krke")){
                             markerImage  =R.drawable.krka;
                         } else if (markerName.equals("Cerkev Marije Brezmadežne")){
-                            markerImage = R.drawable.cerkev3;
+                            markerImage = R.drawable.cerkev;
                         }
                         packet.putString("marker_name", markerName);
                         packet.putInt("marker_image", markerImage);
+                        packet.putString("marker_opis", markerOpis);
                         System.out.println("Packet:"+markerName);
                         MarkerInfo sendData = new MarkerInfo();
                         sendData.setArguments(packet);
@@ -97,19 +99,24 @@ public class MainActivity extends AppCompatActivity implements MarkerInfo.OnFrag
 
                         mapboxMap.addMarker(new MarkerOptions()
                                 .position(new LatLng(45.828328, 14.816625))
-                                .title(getString(R.string.marker1)));
+                                .title(getString(R.string.marker1)))
+                                .setSnippet(getString(R.string.ambrus_opis));
                         mapboxMap.addMarker(new MarkerOptions()
                                 .position(new LatLng(45.858274, 14.835290))
-                                .title(getString(R.string.marker2)));
+                                .title(getString(R.string.marker2)))
+                                .setSnippet(getString(R.string.cerkev_opis));
                         mapboxMap.addMarker(new MarkerOptions()
                                 .position(new LatLng(45.889839, 14.771099))
-                                .title(getString(R.string.marker3)));
+                                .title(getString(R.string.marker3)))
+                                .setSnippet(getString(R.string.krka_opis));
                         mapboxMap.addMarker(new MarkerOptions()
                                 .position(new LatLng(45.856914, 14.833240))
-                                .title(getString(R.string.marker4)));
+                                .title(getString(R.string.marker4)))
+                                .setSnippet(getString(R.string.jama_opis));
                         mapboxMap.addMarker(new MarkerOptions()
                                 .position(new LatLng(45.846708, 14.779842))
-                                .title(getString(R.string.marker5)));
+                                .title(getString(R.string.marker5)))
+                                .setSnippet(getString(R.string.vrh_opis));
 
 
 
