@@ -4,17 +4,14 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.mapbox.mapboxsdk.annotations.Marker;
 
-import org.w3c.dom.Text;
 
 
 /**
@@ -69,7 +66,7 @@ public class MarkerInfo extends Fragment implements View.OnClickListener{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        System.out.println("Arguments: " + getArguments());
+        //System.out.println("Arguments: " + getArguments());
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getInt(ARG_PARAM2);
@@ -83,8 +80,8 @@ public class MarkerInfo extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.fragment_marker_info, container, false);
+
 
         TextView markerText = view.findViewById(R.id.markerTxt);
         TextView markerOpis = view.findViewById(R.id.opisTxt);
@@ -105,7 +102,10 @@ public class MarkerInfo extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        getFragmentManager().popBackStackImmediate();
+        if(getFragmentManager()!=null){
+            getFragmentManager().popBackStackImmediate();
+        }
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event

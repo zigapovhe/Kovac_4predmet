@@ -24,7 +24,7 @@
         <android.support.constraint.ConstraintLayout
             android:id="@+id/banner"
             android:layout_width="379dp"
-            android:layout_height="130dp"
+            android:layout_height="170dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
@@ -54,7 +54,8 @@
                 android:layout_width="200dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:scaleType="centerInside"
+                android:scaleType="fitXY"
+                android:contentDescription="@string/app_name"
                 android:src="@drawable/cerkev"
                 android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"

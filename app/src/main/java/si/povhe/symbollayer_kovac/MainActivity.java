@@ -1,8 +1,6 @@
 package si.povhe.symbollayer_kovac;
 
 
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,22 +8,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Toast;
-
-import com.mapbox.geojson.Feature;
-import com.mapbox.geojson.Point;
 import com.mapbox.mapboxsdk.Mapbox;
 import com.mapbox.mapboxsdk.annotations.Marker;
 import com.mapbox.mapboxsdk.annotations.MarkerOptions;
-import com.mapbox.mapboxsdk.annotations.PolylineOptions;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 import com.mapbox.mapboxsdk.maps.Style;
-import com.mapbox.mapboxsdk.style.layers.PropertyFactory;
-import com.mapbox.mapboxsdk.style.layers.SymbolLayer;
-import com.mapbox.mapboxsdk.style.sources.GeoJsonSource;
 
 public class MainActivity extends AppCompatActivity implements MarkerInfo.OnFragmentInteractionListener {
 
@@ -58,16 +48,23 @@ public class MainActivity extends AppCompatActivity implements MarkerInfo.OnFrag
                         String markerName = marker.getTitle();
                         String markerOpis = marker.getSnippet();
                         int markerImage=R.drawable.cerkev;
-                        if (markerName.equals("Ambruški vaški center")){
-                            markerImage = R.drawable.ambrus;
-                        } else if (markerName.equals("Kraška jama")){
-                            markerImage = R.drawable.jama;
-                        } else if (markerName.equals("Ciganov Vrh, ruševine")){
-                            markerImage = R.drawable.ciganov;
-                        } else if (markerName.equals("Izvir reke Krke")){
-                            markerImage  =R.drawable.krka;
-                        } else if (markerName.equals("Cerkev Marije Brezmadežne")){
-                            markerImage = R.drawable.cerkev;
+
+                        switch (markerName) {
+                            case "Ambruški vaški center":
+                                markerImage = R.drawable.ambrus;
+                                break;
+                            case "Kraška jama":
+                                markerImage = R.drawable.jama;
+                                break;
+                            case "Ciganov Vrh, ruševine":
+                                markerImage = R.drawable.ciganov;
+                                break;
+                            case "Izvir reke Krke":
+                                markerImage = R.drawable.krka;
+                                break;
+                            case "Cerkev Marije Brezmadežne":
+                                markerImage = R.drawable.cerkev;
+                                break;
                         }
                         packet.putString("marker_name", markerName);
                         packet.putInt("marker_image", markerImage);
@@ -75,17 +72,14 @@ public class MainActivity extends AppCompatActivity implements MarkerInfo.OnFrag
                         System.out.println("Packet:"+markerName);
                         MarkerInfo sendData = new MarkerInfo();
                         sendData.setArguments(packet);
-
-
+                        if(fragment!=null){
+                            manager.popBackStackImmediate();
+                        }
                         fragment = new MarkerInfo();
                         fragment.setArguments(packet);
                         FragmentTransaction transaction = manager.beginTransaction();
-                        transaction.addToBackStack(null);
 
-                        transaction.add(R.id.fragment_container, fragment).commit();
-
-
-
+                        transaction.replace(R.id.fragment_container, fragment).addToBackStack(null).commit();
                         return true;
                     }
                 });
@@ -93,9 +87,6 @@ public class MainActivity extends AppCompatActivity implements MarkerInfo.OnFrag
                 mapboxMap.setStyle(Style.MAPBOX_STREETS, new Style.OnStyleLoaded() {
                     @Override
                     public void onStyleLoaded(@NonNull Style style) {
-// Add the marker image to map
-
-
 
                         mapboxMap.addMarker(new MarkerOptions()
                                 .position(new LatLng(45.828328, 14.816625))
@@ -118,15 +109,12 @@ public class MainActivity extends AppCompatActivity implements MarkerInfo.OnFrag
                                 .title(getString(R.string.marker5)))
                                 .setSnippet(getString(R.string.vrh_opis));
 
-
-
                     }
                 });
             }
         });
     }
 
-    // Add the mapView's own lifecycle methods to the activity's lifecycle methods
     @Override
     public void onStart() {
         super.onStart();
